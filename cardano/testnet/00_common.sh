@@ -11,17 +11,19 @@ unset magicparam network addrformat
 #
 ##############################################################################################################################
 
+#--------- Source environment from guild-operators cnode/scripts/env ---------
+. /opt/cardano/cnode/scripts/env
 
 #--------- Set the Path to your node socket file and to your genesis files here ---------
-socket="db-mainnet/node.socket" #Path to your cardano-node socket for machines in online-mode. Another example would be "$HOME/cnode/sockets/node.socket"
-genesisfile="configuration-mainnet/mainnet-shelley-genesis.json"           #Shelley-Genesis path, you can also use the placeholder $HOME to specify your home directory
-genesisfile_byron="configuration-mainnet/mainnet-byron-genesis.json"       #Byron-Genesis path, you can also use the placeholder $HOME to specify your home directory
+socket="${CNODE_HOME}/sockets/node0.socket" #Path to your cardano-node socket for machines in online-mode. Another example would be "$HOME/cnode/sockets/node.socket"
+genesisfile="${CNODE_HOME}/files/shelley-genesis.json"           #Shelley-Genesis path, you can also use the placeholder $HOME to specify your home directory
+genesisfile_byron="${CNODE_HOME}/files/byron-genesis.json"       #Byron-Genesis path, you can also use the placeholder $HOME to specify your home directory
 
 
 #--------- Set the Path to your main binaries here ---------
-cardanocli="./cardano-cli"	#Path to your cardano-cli binary you wanna use. If your binary is present in the Path just set it to "cardano-cli" without the "./" infront
-cardanonode="./cardano-node"	#Path to your cardano-node binary you wanna use. If your binary is present in the Path just set it to "cardano-node" without the "./" infront
-bech32_bin="./bech32"		#Path to your bech32 binary you wanna use. If your binary is present in the Path just set it to "bech32" without the "./" infront
+cardanocli="${HOME}/.local/bin/CIP-0094/cardano-cli"	#Path to your cardano-cli binary you wanna use. If your binary is present in the Path just set it to "cardano-cli" without the "./" infront
+cardanonode="${HOME}/.local/bin/cardano-node"	#Path to your cardano-node binary you wanna use. If your binary is present in the Path just set it to "cardano-node" without the "./" infront
+bech32_bin="${HOME}/.local/bin/bech32"		#Path to your bech32 binary you wanna use. If your binary is present in the Path just set it to "bech32" without the "./" infront
 
 
 #--------- You can work in offline mode too, please read the instructions on the github repo README :-)
@@ -33,7 +35,7 @@ offlineFile="./offlineTransfer.json" 	#path to the filename (JSON) that will be 
 
 
 #--------- Only needed if you wanna do catalyst voting or include your itn witness for your pool-ticker
-cardanosigner="./cardano-signer"		#Path to your cardano-signer binary you wanna use. If your binary is present in the Path just set it to "cardano-signer" without the "./" infront
+cardanosigner="${HOME}/.local/bin/cardano-signer"		#Path to your cardano-signer binary you wanna use. If your binary is present in the Path just set it to "cardano-signer" without the "./" infront
 
 
 #--------- Only needed if you wanna do catalyst voting
@@ -41,7 +43,7 @@ catalyst_toolbox_bin="./catalyst-toolbox"	#Path to your catalyst-toolbox binary 
 
 
 #--------- Only needed if you wanna use a hardware key (Ledger/Trezor) too, please read the instructions on the github repo README :-)
-cardanohwcli="cardano-hw-cli"      #Path to your cardano-hw-cli binary you wanna use. If your binary is present in the Path just set it to "cardano-hw-cli" without the "./" infront
+cardanohwcli="${HOME}/.local/bin/cardano-hw-cli"      #Path to your cardano-hw-cli binary you wanna use. If your binary is present in the Path just set it to "cardano-hw-cli" without the "./" infront
 
 
 #--------- Only needed if you wanna generate the right format for the NativeAsset Metadata Registry
@@ -51,7 +53,7 @@ cardanometa="./token-metadata-creator" #Path to your token-metadata-creator bina
 #          Using a preconfigured network name automatically loads and sets the magicparam, addrformat and byronToShelleyEpochs parameters, also API-URLs, etc.
 
 #network="Mainnet" 	#Mainnet (Default)
-#network="PreProd" 	#PreProd Testnet (new default Testnet)
+network="PreProd" 	#PreProd Testnet (new default Testnet)
 #network="Preview"	#Preview Testnet (new fast Testnet)
 #network="Legacy"	#Legacy TestChain (formally known as Public-Testnet)
 #network="GuildNet"	#GuildNet Testnet
